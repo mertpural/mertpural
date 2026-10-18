@@ -86,7 +86,7 @@ def fetch_stats(cache):
             else:
                 raise RuntimeError(f"{n} istatistigi hazir degil")
             for c in d:
-                if c["author"] and c["author"]["login"].lower() == USER.lower():
+                if c["author"] and c["author"]["login"].lower() in (USER.lower(), "piercies3sc"):  # eski kullanici adi: GitHub istatistik onbellegi eski login ile kalabiliyor
                     for w in c["weeks"]: add += w["a"]; dele += w["d"]
         s["loc_add"], s["loc_del"] = add, dele
     except Exception as e:

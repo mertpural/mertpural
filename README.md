@@ -6,6 +6,6 @@
 
 <div align="center">
 
-🐱 **[mertpural.github.io](https://mertpural.github.io)** · Tonti ile tanış (pixel art kedili portfolyo sitem)
+[mertpural.github.io](https://mertpural.github.io)
 
 </div>
