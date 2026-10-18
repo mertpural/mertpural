@@ -84,7 +84,8 @@ def fetch_stats(cache):
                 if st == 200 and isinstance(d, list): break
                 time.sleep(4)          # 202 = GitHub hesapliyor, bekle
             else:
-                raise RuntimeError(f"{n} istatistigi hazir degil")
+                print(f"uyari: {n} istatistigi hazir degil, atlaniyor")
+                d = []
             for c in d:
                 # kullanici adi degisince eski e-postali commitler "author: null" gelebiliyor; tek katkida bulunan repoda bunlar da sana ait
                 if (c["author"] and c["author"]["login"].lower() in (USER.lower(), "piercies3sc")) or (c["author"] is None and len(d) == 1):
