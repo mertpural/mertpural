@@ -116,7 +116,7 @@ def build(s):
     FS = 16; C = FS * 0.6
     AFS = 11.6; CW = AFS * 0.6; LH = AFS * 1.2
     PADL = 20; ART_W = COLS * CW; GAP = 26
-    RX = PADL + ART_W + GAP; RIGHT_W = 66 * C + 44; W = int(RX + RIGHT_W)
+    RX = PADL + ART_W + GAP
     GOLD="#d4a540"; WHITE="#e6edf3"; GRAY="#6e7681"; ORANGE="#f0883e"; GREEN="#3fb950"; RED="#f85149"
     loc = s["loc_add"] - s["loc_del"]
     rows = [("head",), ("kv","OS","Windows 11, macOS, iOS"), ("kv","Uptime",uptime()),
@@ -130,9 +130,17 @@ def build(s):
              ("sec","GitHub Stats"), ("kv","Repos",f"{s['repos']} {{Contributed: {s['contributed']}}}"),
              ("kv","Commits",f"{s['commits']:,}"), ("kv","Stars / Followers",f"{s['stars']:,} / {s['followers']:,}"), ("kv","Last.Commit",s.get("last_commit","-")), ("loc",)]
     LHR = 23
+    def tlen(r):
+        k = r[0]
+        if k == "head": return 11, 22 * 0.6
+        if k == "sec": return 35, C
+        if k == "loc": return 2 + 14 + 1 + 9 + 1 + len(f"{loc:,}") + 3 + len(f"{s['loc_add']:,}++") + 2 + len(f"{s['loc_del']:,}--") + 2, C
+        return 2 + len(r[1]) + 1 + max(3, 24 - len(r[1]) - 1) + 2 + len(r[2]), C
+    RIGHT_W = max(tlen(r)[0] * tlen(r)[1] for r in rows if r[0] != "gap") + 2
+    W = int(RX + RIGHT_W + PADL)
     hg = lambda r: {"head":38,"gap":12,"sec":LHR+3}.get(r[0], LHR)
     block_h = sum(hg(r) for r in rows) + 30
-    H = int(max(ROWS * LH, block_h) + 60)
+    H = int(max(ROWS * LH, block_h) + 50)
     top_art = (H - ROWS * LH) / 2; y = (H - block_h) / 2 + 22
     o = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">',
          '<style>text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono","Courier New",monospace;white-space:pre}'
@@ -172,7 +180,8 @@ def build(s):
                    f'<tspan fill="{WHITE}">{html.escape(v)}</tspan>')
         dur = max(0.2, n * 0.007)
         defs.append(f'<clipPath id="{cid}"><rect x="{RX-4:.1f}" y="{yy-26:.1f}" height="40" width="0"><animate attributeName="width" from="0" to="{RIGHT_W+20:.0f}" begin="{t:.2f}s" dur="{dur:.2f}s" fill="freeze"/></rect></clipPath>')
-        body.append(f'<text x="{RX:.1f}" y="{yy:.1f}" font-size="{FS}" clip-path="url(#{cid})">{txt}</text>')
+        tl, tc = tlen(r)
+        body.append(f'<text x="{RX:.1f}" y="{yy:.1f}" font-size="{FS}" textLength="{tl*tc:.1f}" lengthAdjust="spacing" clip-path="url(#{cid})">{txt}</text>')
         t += dur + 0.05; y += adv
     o.append("<defs>" + "".join(defs) + "</defs>"); o += body
     o.append(f'<rect class="cur" x="{RX:.1f}" y="{y-12:.1f}" width="9" height="18" fill="{GREEN}" opacity="0" style="animation-delay:{t:.2f}s"/>')
