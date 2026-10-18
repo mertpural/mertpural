@@ -119,11 +119,20 @@ def build(s):
     RX = PADL + ART_W + GAP
     GOLD="#d4a540"; WHITE="#e6edf3"; GRAY="#6e7681"; ORANGE="#f0883e"; GREEN="#3fb950"; RED="#f85149"
     loc = s["loc_add"] - s["loc_del"]
+    def wrapkv(key, v, limit=24):
+        # uzun degeri ", " yerinden iki satira boler; ikinci satir deger sutununa hizalanir
+        if len(v) <= limit: return [("kv", key, v)]
+        a = v.split(", "); first = a[0]
+        for i in range(1, len(a)):
+            if len(first + ", " + a[i]) + 1 > limit: break
+            first += ", " + a[i]
+        rest = v[len(first) + 1:].lstrip()
+        return [("kv", key, first + ","), ("cont", rest)]
     rows = [("head",), ("kv","OS","Windows 11, macOS, iOS"), ("kv","Uptime",uptime()),
             ("kv","Education",EDUCATION), ("kv","Location",LOCATION), ("gap",),
-            ("kv","Languages.Programming",PROGRAMMING), ("kv","Languages.Computer",COMPUTER), ("kv","Languages.Real",REAL),
+            *wrapkv("Languages.Programming",PROGRAMMING), ("kv","Languages.Computer",COMPUTER), ("kv","Languages.Real",REAL),
             ("kv","Top.Language",s.get("top_lang","-")), ("gap",),
-            ("kv","Hobbies.Software",HOB_SOFT), ("kv","Hobbies.Hardware",HOB_HARD), ("gap",)]
+            *wrapkv("Hobbies.Software",HOB_SOFT), ("kv","Hobbies.Hardware",HOB_HARD), ("gap",)]
     if EXTRA_LINES:
         rows += [("kv", k, v) for k, v in EXTRA_LINES] + [("gap",)]
     rows += [("sec","Contact"), ("kv","Email.Personal",EMAIL), ("kv","Discord",DISCORD)] + [("gap",),
@@ -134,6 +143,7 @@ def build(s):
         k = r[0]
         if k == "head": return 11, 22 * 0.6
         if k == "sec": return 35, C
+        if k == "cont": return 28 + len(r[1]), C
         if k == "loc": return 2 + 14 + 1 + 9 + 1 + len(f"{loc:,}") + 3 + len(f"{s['loc_add']:,}++") + 2 + len(f"{s['loc_del']:,}--") + 2, C
         return 2 + len(r[1]) + 1 + max(3, 24 - len(r[1]) - 1) + 2 + len(r[2]), C
     RIGHT_W = max(tlen(r)[0] * tlen(r)[1] for r in rows if r[0] != "gap") + 2
@@ -173,6 +183,9 @@ def build(s):
             txt = (f'<tspan fill="{GRAY}">· </tspan><tspan fill="{GOLD}">Lines of Code:</tspan><tspan fill="{GRAY}"> {"."*9} </tspan>'
                    f'<tspan fill="{WHITE}" font-weight="bold">{loc:,}</tspan><tspan fill="{GRAY}"> ( </tspan><tspan fill="{GREEN}" font-weight="bold">{s["loc_add"]:,}++</tspan>'
                    f'<tspan fill="{GRAY}">, </tspan><tspan fill="{RED}" font-weight="bold">{s["loc_del"]:,}--</tspan><tspan fill="{GRAY}"> )</tspan>')
+        elif k == "cont":
+            n = 28 + len(r[1]); yy = y; adv = LHR
+            txt = f'<tspan fill="{WHITE}">{" " * 28}{html.escape(r[1])}</tspan>'
         else:
             key, v = r[1], r[2]; dots = "." * max(3, 24 - len(key) - 1); yy = y; adv = LHR
             n = 2 + len(key) + 1 + len(dots) + 2 + len(v)
