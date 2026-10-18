@@ -5,7 +5,7 @@ stats_cache.json'daki son bilinen rakam kullanilir, kart bozulmaz."""
 import json, os, sys, time, html, datetime, urllib.request
 
 # ================== AYARLAR (buradan degistir) ==================
-USER   = "Piercies3sc"
+USER   = "mertpural"
 BIRTH  = (2004, 5, 17)        # Uptime buradan hesaplanir (yil, ay, gun) -- kontrol et!
 INFO = [                       # sabit bilgiler: (etiket, deger)
     ("OS", "Windows 11, macOS, iOS"),

@@ -10,7 +10,7 @@ import subprocess
 import math
 from pathlib import Path
 
-USERNAME = "Piercies3sc"
+USERNAME = "mertpural"
 REPO_ROOT = Path(__file__).resolve().parent.parent
 ASCII_PATH = REPO_ROOT / "assets" / "ascii-art.txt"
 CACHE_PATH = REPO_ROOT / "profile_stats_cache.json"
@@ -19,7 +19,7 @@ LIGHT_SVG_PATH = REPO_ROOT / "light_mode.svg"
 
 def get_headers():
     headers = {
-        "User-Agent": "Piercies3sc-Profile-Generator",
+        "User-Agent": "mertpural-Profile-Generator",
         "Accept": "application/vnd.github+json"
     }
     token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
@@ -112,7 +112,7 @@ def save_cached_stats(stats_dict):
 
 def fetch_contributed_repos():
     """
-    Fetches real count of repositories Piercies3sc has contributed to.
+    Fetches real count of repositories mertpural has contributed to.
     Uses GitHub GraphQL API with fallback to Search API.
     """
     headers = get_headers()
