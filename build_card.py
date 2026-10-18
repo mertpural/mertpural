@@ -87,7 +87,7 @@ def fetch_stats(cache):
                 raise RuntimeError(f"{n} istatistigi hazir degil")
             for c in d:
                 # kullanici adi degisince eski e-postali commitler "author: null" gelebiliyor; tek katkida bulunan repoda bunlar da sana ait
-            if (c["author"] and c["author"]["login"].lower() in (USER.lower(), "piercies3sc")) or (c["author"] is None and len(d) == 1):
+                if (c["author"] and c["author"]["login"].lower() in (USER.lower(), "piercies3sc")) or (c["author"] is None and len(d) == 1):
                     for w in c["weeks"]: add += w["a"]; dele += w["d"]
         s["loc_add"], s["loc_del"] = add, dele
     except Exception as e:
