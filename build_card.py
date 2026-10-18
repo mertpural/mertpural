@@ -115,7 +115,7 @@ def build(s):
     COLS = len(rows_art[0]); ROWS = len(rows_art)
     FS = 16; C = FS * 0.6
     AFS = 11.6; CW = AFS * 0.6; LH = AFS * 1.2
-    PADL = 20; ART_W = COLS * CW; GAP = 26
+    PADL = 12; ART_W = COLS * CW; GAP = 18
     RX = PADL + ART_W + GAP
     GOLD="#d4a540"; WHITE="#e6edf3"; GRAY="#6e7681"; ORANGE="#f0883e"; GREEN="#3fb950"; RED="#f85149"
     loc = s["loc_add"] - s["loc_del"]
@@ -140,7 +140,7 @@ def build(s):
     W = int(RX + RIGHT_W + PADL)
     hg = lambda r: {"head":38,"gap":12,"sec":LHR+3}.get(r[0], LHR)
     block_h = sum(hg(r) for r in rows) + 30
-    H = int(max(ROWS * LH, block_h) + 50)
+    H = int(max(ROWS * LH, block_h) + 34)
     top_art = (H - ROWS * LH) / 2; y = (H - block_h) / 2 + 22
     o = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">',
          '<style>text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono","Courier New",monospace;white-space:pre}'
