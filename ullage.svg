@@ -2,7 +2,7 @@
 <rect width="779" height="187" rx="10" fill="#0d1117" stroke="#30363d"/>
 <style>text{font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif}</style>
 <text x="20" y="32" font-size="15" font-weight="600" fill="#e6edf3">Ullage</text>
-<text x="759" y="32" font-size="12" text-anchor="end" fill="#8b949e">7.9B token · son 12 ay</text>
+<text x="759" y="32" font-size="12" text-anchor="end" fill="#8b949e">8.0B token · son 12 ay</text>
 <defs><clipPath id="c"><rect width="11" height="11" rx="2"/></clipPath></defs>
 <rect x="20" y="52" width="11" height="11" rx="2" fill="#161b22"><title>9 Kas 2025: kullanım yok</title></rect>
 <rect x="20" y="66" width="11" height="11" rx="2" fill="#161b22"><title>10 Kas 2025: kullanım yok</title></rect>
@@ -372,7 +372,8 @@
 <rect x="748" y="66" width="11" height="11" rx="2" fill="#161b22"><title>9 Kas 2026: kullanım yok</title></rect>
 <g transform="translate(748 80)" clip-path="url(#c)" fill-opacity="0.4"><rect y="0.00" width="11" height="11.30" fill="#d97857"/><title>10 Kas 2026: 10.2M token</title></g>
 <g transform="translate(748 94)" clip-path="url(#c)" fill-opacity="0.8"><rect y="0.00" width="11" height="11.30" fill="#d97857"/><title>11 Kas 2026: 362.9M token</title></g>
-<g transform="translate(748 108)" clip-path="url(#c)" fill-opacity="0.4"><rect y="0.00" width="11" height="11.30" fill="#d97857"/><title>12 Kas 2026: 94.7M token</title></g>
+<g transform="translate(748 108)" clip-path="url(#c)" fill-opacity="0.6"><rect y="0.00" width="11" height="11.30" fill="#d97857"/><title>12 Kas 2026: 248.4M token</title></g>
+<rect x="748" y="122" width="11" height="11" rx="2" fill="#161b22"><title>13 Kas 2026: kullanım yok</title></rect>
 <text x="759" y="173" font-size="10" text-anchor="end" fill="#8b949e">Antigravity</text>
 <rect x="677" y="164" width="9" height="9" rx="2" fill="#294dcc"/>
 <text x="663" y="173" font-size="10" text-anchor="end" fill="#8b949e">Gemini</text>
