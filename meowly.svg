@@ -373,7 +373,8 @@
 <g transform="translate(748 80)" clip-path="url(#c)" fill-opacity="0.4"><rect y="0.00" width="11" height="4.80" fill="#d97850"/><rect y="4.50" width="11" height="6.80" fill="#6b87e0"/><title>24 Kas 2026: 24.8M token</title></g>
 <g transform="translate(748 94)" clip-path="url(#c)" fill-opacity="0.4"><rect y="0.00" width="11" height="5.60" fill="#d97850"/><rect y="5.30" width="11" height="6.00" fill="#6b87e0"/><title>25 Kas 2026: 40.8M token</title></g>
 <g transform="translate(748 108)" clip-path="url(#c)" fill-opacity="0.6"><rect y="0.00" width="11" height="7.36" fill="#d97850"/><rect y="7.06" width="11" height="4.24" fill="#6b87e0"/><title>26 Kas 2026: 111.3M token</title></g>
-<rect x="748" y="122" width="11" height="11" rx="2" fill="#161b22"><title>27 Kas 2026: kullanım yok</title></rect>
+<g transform="translate(748 122)" clip-path="url(#c)" fill-opacity="0.4"><rect y="0.00" width="11" height="11.30" fill="#d97850"/><title>27 Kas 2026: 448K token</title></g>
+<rect x="748" y="136" width="11" height="11" rx="2" fill="#161b22"><title>28 Kas 2026: kullanım yok</title></rect>
 <rect x="20" y="164" width="9" height="9" rx="2" fill="#d97850"/>
 <text x="33" y="173" font-size="10" fill="#8b949e">Claude</text>
 <rect x="85" y="164" width="9" height="9" rx="2" fill="#b8b8b8"/>
